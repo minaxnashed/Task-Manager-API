@@ -44,7 +44,9 @@ cd task-manager-api
 ```
 
 ### 1. Run the Application
+```
 dotnet run
+```
 
 ## 🛠️ API Endpoints
 
