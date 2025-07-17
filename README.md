@@ -40,7 +40,7 @@ TaskManagerApi/
 
 ```
 bash git clone https://github.com/your-username/task-manager-api.git
-cd task-manager-api ```
+cd task-manager-api
 ```
 
 ### 1. Run the Application
@@ -51,7 +51,6 @@ dotnet run
 ### ✅ Get All Tasks
 
 ```
-http
 GET /api/tasks
 [
   {
@@ -62,4 +61,26 @@ GET /api/tasks
 ]
 ```
 
+### ➕ Create a New Task
 
+```
+POST /api/tasks
+Content-Type: application/json
+
+{
+  "title": "Buy groceries"
+}
+```
+
+### 🔁 Toggle Task Completion
+
+```
+PUT /api/tasks/{id}/toggle
+
+{
+  "id": 2,
+  "title": "Buy groceries",
+  "description": "Milk, Eggs, Bread",
+  "isCompleted": true
+}
+```
