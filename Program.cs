@@ -18,7 +18,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello World!!");
 
 app.MapGet("/tasks", async (ITaskRepository repo) =>
 {
