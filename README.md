@@ -23,14 +23,21 @@ A lightweight RESTful API for managing tasks. Built using **.NET Core** and **En
 
 ## 📁 Project Structure
 
+```
 TaskManagerApi/
-│
-├── Program.cs // API entry point
-├── Models/ // Task entity models
-├── Data/ // EF Core DbContext and Seed data
-├── Controllers/ // API endpoints
-├── Services/ // Business logic (optional, for clean separation)
-└── Repositories/ // Data access layer (optional, for clean architecture)
+├── Program.cs # Entry point of the application
+├── Models/ # Task entity definitions
+│ └── Task.cs
+├── Data/ # EF Core DbContext and seed data
+│ └── AppDbContext.cs
+├── Controllers/ # HTTP route handlers
+│ └── TaskController.cs
+├── Services/ # Business logic layer (optional)
+│ └── TaskService.cs
+├── Repositories/ # Data access layer (optional)
+│ └── TaskRepository.cs
+└── appsettings.json # App configuration file
+```
 
 ---
 
