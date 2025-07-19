@@ -9,6 +9,7 @@ A lightweight RESTful API for managing tasks. Built using **.NET Core** and **En
 - ✅ Get all tasks
 - ➕ Create a new task
 - 🔁 Toggle the "completed" status of a task
+- ❌ Delete a task
 
 ---
 
@@ -72,7 +73,6 @@ GET /api/tasks
 ```
 
 ### ➕ Create a New Task
-
 ```
 POST /api/tasks
 Content-Type: application/json
@@ -83,7 +83,6 @@ Content-Type: application/json
 ```
 
 ### 🔁 Toggle Task Completion
-
 ```
 PUT /api/tasks/{id}/toggle
 
@@ -93,4 +92,9 @@ PUT /api/tasks/{id}/toggle
   "description": "Milk, Eggs, Bread",
   "isCompleted": true
 }
+```
+
+### ❌ Delete a Task
+```
+DELETE /api/tasks/{id}
 ```
