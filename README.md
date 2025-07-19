@@ -61,6 +61,12 @@ cd task-manager-api
 dotnet run
 ```
 
+Oprional
+If you want to run on a specific port run
+```
+dotnet run --urls=http://localhost:5010
+```
+
 ## 🛠️ API Endpoints
 
 ### ✅ Get All Tasks
