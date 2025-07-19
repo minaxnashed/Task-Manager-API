@@ -62,7 +62,7 @@ dotnet run
 ### ✅ Get All Tasks
 
 ```
-GET /api/tasks
+GET /tasks
 [
   {
     "id": 1,
@@ -74,7 +74,7 @@ GET /api/tasks
 
 ### ➕ Create a New Task
 ```
-POST /api/tasks
+POST /tasks
 Content-Type: application/json
 
 {
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 ### 🔁 Toggle Task Completion
 ```
-PUT /api/tasks/{id}/toggle
+PUT /tasks/{id}/toggle
 
 {
   "id": 2,
@@ -96,5 +96,5 @@ PUT /api/tasks/{id}/toggle
 
 ### ❌ Delete a Task
 ```
-DELETE /api/tasks/{id}
+DELETE /tasks/{id}
 ```
