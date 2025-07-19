@@ -44,6 +44,11 @@ TaskManagerApi/
 
 ## 🚀 Getting Started
 
+### 📦 Prerequisites
+
+- 🧰 [Git](https://git-scm.com/) – for cloning the repository  
+- 🧱 [.NET 8 SDK](https://dotnet.microsoft.com/download) – for building and running the backend  
+
 ### 1. Clone the Repository
 
 ```
