@@ -32,10 +32,11 @@ TaskManagerApi/
 │ └── AppDbContext.cs
 ├── Controllers/ # HTTP route handlers
 │ └── TaskController.cs
-├── Services/ # Business logic layer (optional)
+├── Services/ 
 │ └── TaskService.cs
-├── Repositories/ # Data access layer (optional)
-│ └── TaskRepository.cs
+├── Repositories/ # Data access layer
+│ └── ITaskRepository.cs
+| └── TaskRepository.cs
 └── appsettings.json # App configuration file
 ```
 
