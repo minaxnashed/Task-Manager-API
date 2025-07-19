@@ -33,4 +33,13 @@ public class TaskRepository : ITaskRepository
         await _context.SaveChangesAsync();
         return task;
     }
+    
+    public async Task<bool> DeleteAsync(int id)
+    {
+        var task = await _context.Tasks.FindAsync(id);
+        if (task == null) return false;
+        _context.Tasks.Remove(task);
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }

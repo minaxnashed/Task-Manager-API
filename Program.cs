@@ -13,7 +13,19 @@ builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors();
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -38,6 +50,13 @@ app.MapPut("/tasks/{id}/toggle", async (ITaskRepository repo, int id) =>
     var updated = await repo.ToggleCompletedAsync(id);
     return updated is null ? Results.NotFound() : Results.Ok(updated);
 });
+
+app.MapDelete("/tasks/{id}", async (ITaskRepository repo, int id) =>
+{
+    var deleted = await repo.DeleteAsync(id);
+    return deleted ? Results.NoContent() : Results.NotFound();
+});
+
 
 using (var scope = app.Services.CreateScope())
 {

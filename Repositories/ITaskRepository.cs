@@ -7,4 +7,5 @@ public interface ITaskRepository
     Task<IEnumerable<Task>> GetAllAsync();
     Task<Task> CreateAsync(Task task);
     Task<Task?> ToggleCompletedAsync(int id);
+    Task<bool> DeleteAsync(int id);
 }
