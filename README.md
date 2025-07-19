@@ -18,7 +18,6 @@ A lightweight RESTful API for managing tasks. Built using **.NET Core** and **En
 - [.NET Core 7.0+](https://dotnet.microsoft.com/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [SQLite](https://www.sqlite.org/) or In-Memory DB
-- Minimal API or Clean Architecture (depending on your structure)
 
 ---
 
