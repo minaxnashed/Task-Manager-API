@@ -4,14 +4,25 @@ using TaskManagerAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register services
-builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseSqlite("Data Source=tasks.db")); // or UseInMemoryDatabase("TaskDb")
+// -------------------------------------------
+// Configure Services (Dependency Injection)
+// -------------------------------------------
 
+// Register EF Core with SQLite (can be swapped with InMemory DB for testing)
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseSqlite("Data Source=tasks.db")); // UseInMemoryDatabase("TaskDb") for testing
+
+// Register the TaskRepository as the implementation for ITaskRepository
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-builder.Services.AddControllers(); // <--- Enable MVC controllers
+
+// Enable support for MVC-style controllers
+builder.Services.AddControllers();
+
+// Add Swagger for API documentation/testing UI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Enable Cross-Origin Resource Sharing (CORS) for any origin, header, and method
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -22,21 +33,33 @@ builder.Services.AddCors(options =>
     });
 });
 
+// -------------------------------------------
+// Configure Middleware & HTTP Pipeline
+// -------------------------------------------
+
 var app = builder.Build();
 
+// Enable CORS middleware
 app.UseCors();
+
+// Enable Swagger middleware (API docs and UI)
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// Simple test endpoint
 app.MapGet("/", () => "Hello World!!");
 
-app.MapControllers(); // <--- Enable attribute routing for controllers
+// Map controller endpoints (e.g., /tasks from TasksController)
+app.MapControllers();
 
-// Ensure DB is created
+// -------------------------------------------
+// Ensure database is created at startup
+// -------------------------------------------
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.EnsureCreated();
+    dbContext.Database.EnsureCreated(); // Creates the database and tables if they don't exist
 }
 
+// Start the application
 app.Run();
