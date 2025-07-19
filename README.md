@@ -61,8 +61,8 @@ cd task-manager-api
 dotnet run
 ```
 
-Oprional
-If you want to run on a specific port run
+### 🔧 Optional: Run on a Specific Port
+If you want to override the default port (from launchSettings.json), you can specify a custom port like this:
 ```
 dotnet run --urls=http://localhost:5010
 ```
